@@ -3,3 +3,10 @@
     src: url();
 }
 
+section{
+    background-image:url('images/awesomo.jpg');
+    background-size:cover;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
