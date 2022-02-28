@@ -1,0 +1,39 @@
+body {
+    background-image: url(images/south_park.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    border-radius: 10px;
+    opacity: 0.80;
+}
+  
+li {
+    float: left;
+}
+  
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+  
+
+li a:hover {
+    background-color: #111;
+}
+
+.centrer {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
