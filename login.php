@@ -92,6 +92,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <head>
         <meta charset="UTF-8">
         <title>Login</title>
+        <style>
+            body{ font: 14px sans-serif; text-align: center; }
+            .wrapper{ width: 360px; padding: 20px; margin: 0 auto; }
+        </style>
     </head>
     <body>
         <div class="wrapper">
