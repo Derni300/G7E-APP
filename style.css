@@ -4,10 +4,24 @@ body {
     background-attachment: fixed;
 }
 
+*{
+    font-family: "Gill Sans", sans-serif;
+}
+
 @keyframes commands {
-    0%   {background-color: rgb(153, 213, 255);}
-    50%  {background-color: rgb(0, 255, 0);}
-    100%   {background-color: rgb(153, 213, 255);}
+    0% {
+        background-color: rgb(153, 213, 255);
+    }
+    50% {
+        background-color: rgb(0, 255, 0);
+    }
+    100% {
+        background-color: rgb(153, 213, 255);
+    }
+}
+
+h2 {
+    
 }
 
 ul {
@@ -21,11 +35,11 @@ ul {
     border-width: 0.25em;
     opacity: 0.80;
 }
-  
+
 li {
     float: left;
 }
-  
+
 li a {
     display: block;
     color: white;
@@ -38,10 +52,10 @@ li a {
 
 li img {
     width: 40px;
-    height: 40px;    
+    height: 40px;
     display: block;
 }
-  
+
 
 li a:hover {
     background-color: rgb(153, 213, 255);
@@ -59,12 +73,19 @@ li a:hover {
 }
 
 .wrapper {
+    display: block;
+    margin: 0 auto;
+    width: 40em;
     text-align: center;
     overflow: hidden;
     background-color: rgb(0, 0, 0);
     color: white;
-    border-radius: 100px;
+    border-radius: 20px;
     border: solid;
     border-width: 0.25em;
     opacity: 0.80;
+}
+
+.form-group {
+    margin: 0.3em;
 }

@@ -66,15 +66,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             header("location:index.html");
                         } else{
                             // Le mot de passe n'est pas valide, affiche un message d'erreur générique
-                            $login_err = "Invalid username or password.";
+                            $login_err = "Pseudonyme ou mot de passe incorrect";
                         }
                     }
                 } else{
                     // Le nom d'utilisateur n'existe pas, affiche un message d'erreur générique
-                    $login_err = "Invalid username or password.";
+                    $login_err = "Pseudonyme ou mot de passe incorrect";
                 }
             } else{
-                echo "Oops! Something went wrong. Please try again later.";
+                echo "Veuillez réessayer";
             }
 
             // Fermer la déclaration
@@ -92,15 +92,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <head>
         <meta charset="UTF-8">
         <title>Login</title>
-        <style>
-            body{ font: 14px sans-serif; text-align: center; }
-            .wrapper{ width: 360px; padding: 20px; margin: 0 auto; }
-        </style>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <div class="wrapper">
-            <h2>Login</h2>
-            <p>Please fill in your credentials to login.</p>
+            <h2>Se connecter</h2>
+            <p>Veuillez entrer vos identifiants.</p>
 
             <?php 
             if(!empty($login_err)){
@@ -110,19 +107,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                 <div class="form-group">
-                    <label>Username</label>
+                    <label>Pseudonyme</label>
                     <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
                     <span class="invalid-feedback"><?php echo $username_err; ?></span>
                 </div>    
                 <div class="form-group">
-                    <label>Password</label>
+                    <label>Mot de passe</label>
                     <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
                     <span class="invalid-feedback"><?php echo $password_err; ?></span>
                 </div>
                 <div class="form-group">
                     <input type="submit" class="btn btn-primary" value="Login">
                 </div>
-                <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
+                <p>Vous n'avez pas de compte ? <a href="register.php">S'enregistrer</a>.</p>
             </form>
         </div>
     </body>
