@@ -3,7 +3,7 @@ session_start();
  
 // Vérifiez si l'utilisateur est déjà connecté, si oui, redirigez-le vers la page d'accueil
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: welcome.php");
+    header("location: index.html");
     exit;
 }
  
@@ -19,14 +19,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
  
     // Vérifie si le nom d'utilisateur est vide
     if(empty(trim($_POST["username"]))){
-        $username_err = "Please enter username.";
+        $username_err = "Entrez le pseudonyme";
     } else{
         $username = trim($_POST["username"]);
     }
     
     // Vérifie si le mot de passe est vide
     if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter your password.";
+        $password_err = "Entrez le mot de passe";
     } else{
         $password = trim($_POST["password"]);
     }
