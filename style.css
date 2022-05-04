@@ -30,6 +30,27 @@ input[type = "text"] {
     text-align: center;
 }
 
+input[type="submit"] {
+}
+
+input[type='password']:hover {
+    background-color: rgb(153, 213, 255);
+    color: black;
+    border-radius: 100px;
+    animation-name: commands;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+}
+
+input[type='text']:hover {
+    background-color: rgb(153, 213, 255);
+    color: black;
+    border-radius: 100px;
+    animation-name: commands;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+}
+
 ul {
     list-style-type: none;
     margin: 0;
