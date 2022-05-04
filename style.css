@@ -20,8 +20,14 @@ body {
     }
 }
 
-h2 {
-    
+input[type = "password"] {
+    border-radius: 1em;
+    text-align: center;
+}
+
+input[type = "text"] {
+    border-radius: 1em;
+    text-align: center;
 }
 
 ul {
@@ -88,4 +94,22 @@ li a:hover {
 
 .form-group {
     margin: 0.3em;
+}
+
+.welcome {
+    display: block;
+    margin: 0 auto;
+    color: white;
+    text-align: center;
+    padding: 10px 16px;
+    text-decoration: none;
+    font-family: "Gill Sans", sans-serif;
+    font-size: 1.2em;
+}
+
+.inverted {
+    background-color: rgb(153, 213, 255);
+    color: black;
+    border-radius: 100px;
+    font-weight: 550;
 }

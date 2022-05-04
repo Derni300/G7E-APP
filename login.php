@@ -63,7 +63,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["username"] = $username;                            
                             
                             // Rediriger l'utilisateur vers la page d'accueil
-                            header("location:index.html");
+                            header("location:index.php");
                         } else{
                             // Le mot de passe n'est pas valide, affiche un message d'erreur générique
                             $login_err = "Pseudonyme ou mot de passe incorrect";
