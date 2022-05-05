@@ -131,35 +131,37 @@ h2{
     font-weight: 550;
 }
 .site-footer-inner {
+    
     position: relative;
     display: flex;
     flex-wrap: wrap;
     padding-top: 45px;
-    padding-bottom: 48px
+    padding-bottom: 48px;
 }
 
 .footer-brand, .footer-social-links, .footer-copyright {
     flex: none;
-    width: 100%;
+    width: 99%;
     display: inline-flex;
     justify-content: center 
+    
     
     
 }
 
 .footer-brand, .footer-social-links {
-    margin-bottom: 24px
+    margin-bottom: 24px;
 }
 
 .footer-social-links li {
     display: inline-flex;
-    margin-left: 16px
+    margin-left: 16px;
 }
 
 .section-inner {
     position: relative;
     padding-top: 48px;
-    padding-bottom: 48px
+    padding-bottom: 48px;
 }
 
 .capteurs-wrap {
