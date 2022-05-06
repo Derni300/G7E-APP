@@ -67,6 +67,8 @@ session_start();
     </div>
 </div>
 
+<br>
+
 <footer>
     <a href="box.php">
         <img class="logo" src="images/logo_IM.png" alt="Logo" style="width: 10em;">

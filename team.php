@@ -28,6 +28,8 @@ session_start();
     </ul>
 </nav>
 
+<br>
+
 <footer>
     <a href="team.php">
         <img class="logo" src="images/logo_IM.png" alt="Logo" style="width: 10em;">

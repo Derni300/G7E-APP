@@ -69,6 +69,8 @@ session_start();
     </div>
 </div>
 
+<br>
+
 <footer>
     <a href="contact.php">
         <img class="logo" src="images/logo_IM.png" alt="Logo" style="width: 10em;">
