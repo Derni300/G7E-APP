@@ -67,7 +67,7 @@ session_start();
         </div>
     </div>
 
-    <br><br><br>
+    <br><br><br><br><br>
 
     <div class="capteur-line">
         <div class="capteur-left">

@@ -47,7 +47,7 @@ session_start();
         <div class="data-comp">
 
             <div>
-                17°C
+                32°C
             </div>
             <img src="images/hot.png" alt="Feature 02" style="width: 5em;">
         </div>
