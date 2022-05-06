@@ -124,6 +124,5 @@ session_start();
         </li>
     </ul>
 </footer>
-</div>
 </body>
 </html>
