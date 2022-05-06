@@ -27,5 +27,44 @@ session_start();
         ?>
     </ul>
 </nav>
+
+<br>
+<br>
+
+<div class="container">
+    <br>
+    <br>
+
+    <h2 class="subtitle">Données des Capteurs</h2>
+    
+    <br>
+    <br>
+
+    <div class="capteur">
+            
+        <h3>Température</h3>
+
+        <div class="data-comp">
+
+            <div>
+                17°C
+            </div>
+            <img src="images/hot.png" alt="Feature 02" style="width: 5em;">
+        </div>
+    </div>
+
+    <div class="capteur">
+
+        <h3>CO2</h3>
+
+        <div class="data-comp">
+
+            <div>
+                30%
+            </div>
+            <img src="images/co2-cloud.png" alt="Feature 01"  style="width: 6em;">
+        </div>
+    </div>
+</div>
 </body>
 </html>
