@@ -13,7 +13,7 @@ session_start();
     <ul>
         <li style='padding-right: 2px'><a href="index.php">Acceuil</a></li>
         <li style='padding-right: 2px'><a href="box.php">La boite</a></li>
-        <li style='padding-right: 2px'><a href="team.php">L'équipe</a></li>
+        <!-- <li style='padding-right: 2px'><a href="team.php">L'équipe</a></li> -->
         <li><a href="contact.php">Contact</a></li>
 
         <?php 
@@ -35,15 +35,21 @@ session_start();
     
     <br><br>
 
-    <h2 class="subtitle-index">Qui sommes nous ?</h2>
+    <h2 class="subtitle-index">Qui sommes-nous ?</h2>
 
     <br><br><br>
-
-    <p style="font-size: 1.2em;">
-        Bonjour nous sommes infinite measure une
+    <div style="margin: 0 auto; width: 60em;">
+    <p style="font-size: 1.4em; text-align: center;">
+    Infinite Measures est une entreprise qui s'assure de la fiabilité des pilotes 
+    c'est-à-dire de vérifier si les conducteurs sont capables de reprendre la conduite, 
+    et donc d'endurer des situations stressantes ou encore de réagir rapidement à des situations 
+    imprévues. Cette entreprise a lancé un appel d'offres pour réaliser un boitier de tests 
+    psychotechniques, demandant ainsi un savoir-faire en électronique, informatique, traitement 
+    du signal et télécommunication.
     </p>
+    </div>
 
-    <br><br>
+    <br>
 
     <img class="logo" src="images/logo_IM.png" alt="Logo" style="width: 40em;">
     

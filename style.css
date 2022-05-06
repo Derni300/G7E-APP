@@ -9,6 +9,27 @@ body {
     background-attachment: fixed;
 }
 
+table {
+    margin: 0 auto;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+td {
+    border: 1px solid rgb(255, 255, 255);
+    width: 6em;
+}
+
+.tabular-title {
+    padding-bottom: 6em;
+    font-size: 2em;
+}
+
+.tabular-data {
+    padding-bottom: 6em;
+    font-size: 1.5em;
+}
+
 footer {
     display: table;
     text-align: center;

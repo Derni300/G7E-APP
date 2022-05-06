@@ -13,7 +13,7 @@ session_start();
     <ul>
         <li style='padding-right: 2px'><a href="index.php">Acceuil</a></li>
         <li style='padding-right: 2px'><a href="box.php">La boite</a></li>
-        <li style='padding-right: 2px'><a href="team.php">L'équipe</a></li>
+        <!-- <li style='padding-right: 2px'><a href="team.php">L'équipe</a></li> -->
         <li><a href="contact.php">Contact</a></li>
 
         <?php 
@@ -44,27 +44,63 @@ session_start();
             
         <h3>Température</h3>
 
-        <div class="data-comp">
-
-            <div>
-                32°C
-            </div>
-            <img src="images/hot.png" alt="Feature 02" style="width: 5em;">
+        <div>
+            30%
         </div>
+        <img src="images/co2-cloud.png" alt="Feature 01"  style="width: 6em;">
     </div>
 
     <div class="capteur">
 
         <h3>CO2</h3>
 
-        <div class="data-comp">
-
-            <div>
-                30%
-            </div>
-            <img src="images/co2-cloud.png" alt="Feature 01"  style="width: 6em;">
+        <div>
+            30%
         </div>
+        <img src="images/co2-cloud.png" alt="Feature 01"  style="width: 6em;">
     </div>
+</div>
+
+<br><br>
+
+<div class = "container">
+
+<h2>Tableau de mesure</h2>
+
+<table>
+   <tr class = "tabular-title">
+       <td>Date</td>
+       <td>Heure</td>
+       <td>Température</td>
+       <td>Niveau de CO2</td>
+   </tr>
+   <br>
+   <tr class = "tabular-data">
+       <td>06/05/2022</td>
+       <td>11H20</td>
+       <td>22°C</td>
+       <td>30%</td>
+   </tr>
+   <tr class = "tabular-data">
+       <td>02/05/2022</td>
+       <td>10H10</td>
+       <td>19°C</td>
+       <td>22%</td>
+   </tr>
+   <tr class = "tabular-data">
+       <td>23/04/2022</td>
+       <td>10H14</td>
+       <td>19°C</td>
+       <td>22%</td>
+   </tr>
+   <tr class = "tabular-data">
+       <td>03/05/2022</td>
+       <td>10H45</td>
+       <td>19°C</td>
+       <td>22%</td>
+   </tr>
+</table>
+<br>
 </div>
 
 <br>
