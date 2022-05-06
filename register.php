@@ -122,6 +122,32 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
                 <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
             </div>
+
+            <br>
+
+            <div class="form-group">
+                <label>Prénom</label>
+                <input type="text" name="username" class="form-control">
+                <span class="invalid-feedback"></span>
+            </div>    
+            <div class="form-group">
+                <label>Nom</label>
+                <input type="text" name="username" class="form-control">
+                <span class="invalid-feedback"></span>
+            </div> 
+            <div class="form-group">
+                <label>Adresse</label>
+                <input type="text" name="username" class="form-control">
+                <span class="invalid-feedback"></span>
+            </div>
+            <div class="form-group">
+                <label>Clé administrateur (facultatif)</label>
+                <input type="text" name="username" class="form-control">
+                <span class="invalid-feedback"></span>
+            </div> 
+
+            <br>    
+
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Envoyer">
                 <input type="reset" class="btn btn-secondary ml-2" value="Réinitialiser">

@@ -73,12 +73,19 @@ div h3 {
     }
 }
 
+form {
+    display: inline-block;
+    width: 60%;
+}
+
 input[type = "password"] {
+    float: right;
     border-radius: 1em;
     text-align: center;
 }
 
 input[type = "text"] {
+    float: right;
     border-radius: 1em;
     text-align: center;
 }
