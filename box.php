@@ -1,5 +1,26 @@
 <?php
 session_start();
+
+$host = 'localhost';
+  $dbname = '[app]';
+  $username = 'root';
+  $password = 'root';
+    
+  $dsn = "mysql:host=$host;dbname=$dbname"; 
+  // récupérer tous les utilisateurs
+  $sql = "SELECT * FROM capteurs";
+   
+  try{
+   $pdo = new PDO($dsn, $username, $password);
+   $stmt = $pdo->query($sql);
+   
+   if($stmt === false){
+    die("Erreur");
+   }
+   
+  }catch (PDOException $e){
+    echo $e->getMessage();
+  }
 ?>
 
 <!DOCTYPE html>
@@ -45,9 +66,9 @@ session_start();
         <h3>Température</h3>
 
         <div>
-            30%
+            22°C
         </div>
-        <img src="images/co2-cloud.png" alt="Feature 01"  style="width: 6em;">
+        <img src="images/hot.png" alt="Feature 01"  style="width: 6em;">
     </div>
 
     <div class="capteur">
@@ -68,37 +89,26 @@ session_start();
 <h2>Tableau de mesure</h2>
 
 <table>
-   <tr class = "tabular-title">
+
+    <tr class = "tabular-title">
        <td>Date</td>
+       <td>Lieu</td>
        <td>Heure</td>
-       <td>Température</td>
-       <td>Niveau de CO2</td>
-   </tr>
-   <br>
-   <tr class = "tabular-data">
-       <td>06/05/2022</td>
-       <td>11H20</td>
-       <td>22°C</td>
-       <td>30%</td>
-   </tr>
-   <tr class = "tabular-data">
-       <td>02/05/2022</td>
-       <td>10H10</td>
-       <td>19°C</td>
-       <td>22%</td>
-   </tr>
-   <tr class = "tabular-data">
-       <td>23/04/2022</td>
-       <td>10H14</td>
-       <td>19°C</td>
-       <td>22%</td>
-   </tr>
-   <tr class = "tabular-data">
-       <td>03/05/2022</td>
-       <td>10H45</td>
-       <td>19°C</td>
-       <td>22%</td>
-   </tr>
+       <td>Température (°C)</td>
+       <td>Niveau de CO2 (%)</td>
+    </tr>
+    <br>
+    <tbody>
+        <?php while($row = $stmt->fetch(PDO::FETCH_ASSOC)) : ?>
+        <tr>
+            <td><?php echo htmlspecialchars($row['date']); ?></td>
+            <td><?php echo htmlspecialchars($row['lieu']); ?></td>
+            <td><?php echo htmlspecialchars($row['heure']); ?></td>
+            <td><?php echo htmlspecialchars($row['temperature']); ?></td>
+            <td><?php echo htmlspecialchars($row['co2']); ?></td>
+        </tr>
+        <?php endwhile; ?>
+    </tbody>
 </table>
 <br>
 </div>
