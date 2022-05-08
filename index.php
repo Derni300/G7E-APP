@@ -9,11 +9,10 @@ session_start();
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<nav>
+<nav class="navbar-top">
     <ul>
         <li style='padding-right: 2px'><a href="index.php">Acceuil</a></li>
         <li style='padding-right: 2px'><a href="box.php">La boite</a></li>
-        <!-- <li style='padding-right: 2px'><a href="team.php">L'équipe</a></li> -->
         <li><a href="contact.php">Contact</a></li>
 
         <?php
@@ -98,7 +97,7 @@ session_start();
 
 <br>
 
-<footer>
+<footer class="navbar-bot">
     <a href="index.php">
         <img class="logo" src="images/logo_IM.png" alt="Logo" style="width: 10em;">
     </a>

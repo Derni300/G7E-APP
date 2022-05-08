@@ -34,7 +34,6 @@ $host = 'localhost';
     <ul>
         <li style='padding-right: 2px'><a href="index.php">Acceuil</a></li>
         <li style='padding-right: 2px'><a href="box.php">La boite</a></li>
-        <!-- <li style='padding-right: 2px'><a href="team.php">L'équipe</a></li> -->
         <li><a href="contact.php">Contact</a></li>
 
         <?php 
