@@ -17,12 +17,12 @@ session_start();
         <li><a href="contact.php">Contact</a></li>
 
         <?php 
-            if($_SESSION["loggedin"] = false){
+            if($_SESSION == array()){
                 echo "<li style='float:right';><a href='login.php'>Se connecter</a></li>";
                 echo "<li style='float:right; padding-right: 2px;'><a href='register.php'>S'inscrire</a></li>";
             } else {
                 echo "<li style='float:right';><a href='logout.php'>Se déconnecter</a></li>";
-                echo "<li style='float:right; padding-right: 2px;'><a class='inverted'> Bienvenu " . $_SESSION["username"] . " !</a></li>";
+                echo "<li style='float:right; padding-right: 2px;'><a class='inverted'>Bienvenu " . $_SESSION["username"] . " !</a></li>";
             }      
         ?>
     </ul>
