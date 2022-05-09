@@ -42,6 +42,7 @@ td {
 }
 
 .navbar-top {
+    z-index: 1;
     position: fixed;
     margin: 0 auto;
     width: 60%;
@@ -50,6 +51,7 @@ td {
 }
 
 .navbar-bot {
+    z-index: 1;
     position: fixed;
     margin: 0 auto;
     left: 50%;
