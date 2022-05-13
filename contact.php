@@ -11,7 +11,7 @@ session_start();
 <body>
 <nav class="navbar-top">
     <ul>
-        <li style='padding-right: 2px'><a href="index.php">Acceuil</a></li>
+        <li style='padding-right: 2px'><a href="index.php">Accueil</a></li>
         <li style='padding-right: 2px'><a href="box.php">La boite</a></li>
         <li><a href="contact.php">Contact</a></li>
 
@@ -21,7 +21,7 @@ session_start();
                 echo "<li style='float:right; padding-right: 2px;'><a href='register.php'>S'inscrire</a></li>";
             } else {
                 echo "<li style='float:right';><a href='logout.php'>Se déconnecter</a></li>";
-                echo "<li style='float:right; padding-right: 2px;'><a class='inverted'>Bienvenu " . $_SESSION["username"] . " !</a></li>";
+                echo "<li style='float:right; padding-right: 2px;'><a class='inverted'>Bienvenue " . $_SESSION["username"] . " !</a></li>";
             }      
         ?>
     </ul>
@@ -34,14 +34,14 @@ session_start();
     <br><br><br><br>
 
     <div class="capteur-line">
-        <div class="capteur-left">
+        <div class="capteur-left" style="width: 43em;">
             <a href="https://www.facebook.com/InfiniteMeasuresFr">
                 <img src="images/facebook.png" alt="Feature 01" style="width: 20em;">
             </a>
             <h4 style="font-size: 3em;">Notre Facebook</h4>
         </div>
-
-        <div class="capteur-right">
+        
+        <div class="capteur-right" style="width: 43em;">
             <a href="https://www.instagram.com/infinite_measures/">
                 <img src="images/instagram.png" alt="Feature 02" style="width: 20em;">
             </a>
@@ -52,14 +52,14 @@ session_start();
     <br><br><br><br><br>
 
     <div class="capteur-line">
-        <div class="capteur-left">
+        <div class="capteur-left" style="width: 43em;">
             <a href="https://twitter.com/InfiniteMeasur4">
                 <img src="images/twitter.png" alt="Feature 03" style="width: 20em;">
             </a>
             <h4 style="font-size: 3em;">Notre Twitter</h4>
         </div>
 
-        <div class="capteur-right">
+        <div class="capteur-right" style="width: 43em;">
             <a href="mailto:infinitemeasuresprocontact@gmail.com">
                 <img src="images/email.png" alt="Feature 04" style="width: 20em;">
             </a>

@@ -32,7 +32,7 @@ $host = 'localhost';
 <body>
 <nav class="navbar-top">
     <ul>
-        <li style='padding-right: 2px'><a href="index.php">Acceuil</a></li>
+        <li style='padding-right: 2px'><a href="index.php">Accueil</a></li>
         <li style='padding-right: 2px'><a href="box.php">La boite</a></li>
         <li><a href="contact.php">Contact</a></li>
 
@@ -42,7 +42,7 @@ $host = 'localhost';
                 echo "<li style='float:right; padding-right: 2px;'><a href='register.php'>S'inscrire</a></li>";
             } else {
                 echo "<li style='float:right';><a href='logout.php'>Se déconnecter</a></li>";
-                echo "<li style='float:right; padding-right: 2px;'><a class='inverted'>Bienvenu " . $_SESSION["username"] . " !</a></li>";
+                echo "<li style='float:right; padding-right: 2px;'><a class='inverted'>Bienvenue " . $_SESSION["username"] . " !</a></li>";
             }      
         ?>
     </ul>
@@ -114,11 +114,7 @@ $host = 'localhost';
 
 <br>
 
-<footer class="navbar-bot">
-    <a href="index.php">
-        <img class="logo" src="images/logo_IM.png" alt="Logo" style="width: 10em;">
-    </a>
-    
+<footer class="navbar-bot">   
     <ul>
         <li>
             <a href="https://www.facebook.com/InfiniteMeasuresFr">
