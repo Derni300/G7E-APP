@@ -28,6 +28,7 @@ $host = 'localhost';
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/Logo_Garage.png">
 </head>
 <body>
 <nav class="navbar-top">
