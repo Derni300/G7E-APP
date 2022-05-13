@@ -9,13 +9,13 @@ session_start();
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<nav>
+<nav class="navbar-top">
     <ul>
         <li style='padding-right: 2px'><a href="index.php">Acceuil</a></li>
         <li style='padding-right: 2px'><a href="box.php">La boite</a></li>
         <li><a href="contact.php">Contact</a></li>
 
-        <?php 
+        <?php
             if($_SESSION == array()){
                 echo "<li style='float:right';><a href='login.php'>Se connecter</a></li>";
                 echo "<li style='float:right; padding-right: 2px;'><a href='register.php'>S'inscrire</a></li>";
@@ -70,8 +70,8 @@ session_start();
 
 <br>
 
-<footer>
-    <a href="contact.php">
+<footer class="navbar-bot">
+    <a href="index.php">
         <img class="logo" src="images/logo_IM.png" alt="Logo" style="width: 10em;">
     </a>
     

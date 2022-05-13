@@ -38,7 +38,7 @@ session_start();
 
     <br><br><br>
     <div style="margin: 0 auto; width: 60em;">
-    <p style="font-size: 1.4em; text-align: center;">
+    <p style="font-size: 1.2em; text-align: center;">
     Infinite Measures est une entreprise qui s'assure de la fiabilité des pilotes 
     c'est-à-dire de vérifier si les conducteurs sont capables de reprendre la conduite, 
     et donc d'endurer des situations stressantes ou encore de réagir rapidement à des situations 
@@ -50,7 +50,7 @@ session_start();
 
     <br>
 
-    <img class="logo" src="images/logo_IM.png" alt="Logo" style="width: 40em;">
+    <img class="logo" src="images/logo_IM.png" alt="Logo" style="width: 20em;">
     
     <div class="capteur-line">
         <div class="capteur-left">

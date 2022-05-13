@@ -89,7 +89,7 @@ footer {
 .subtitle-index {
     margin: 0 auto;
     width: 70%;
-    font-size: 5em;
+    font-size: 3em;
     color: rgb(255, 255, 255);
     text-align: center;
     border-radius: 100px;
@@ -271,6 +271,8 @@ li a:hover {
 
 .container-big {
     margin: 0 auto;
+    margin-top: 2em;
+    margin-bottom: 2em;
     width: 80em;
     text-align: center;
     color: white;
