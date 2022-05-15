@@ -46,7 +46,7 @@ session_start();
         </div>
         
         <div class="capteur-mid">
-            <h2 class="subtitle-index">Qui sommes-nous ?</h2>
+            <h2 class="subtitle-index" style="margin-top: 1em;">Qui sommes-nous ?</h2>
 
             <br><br>
 

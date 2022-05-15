@@ -130,7 +130,7 @@ div h3 {
 
 .capteur-mid {
     margin: 0 auto;
-    width: 38em;
+    width: 34em;
 }
 
 .capteur-left {
@@ -295,7 +295,7 @@ li a:hover {
     opacity: 0.80;
     border-radius: 40px;
     border: solid;
-    border-width: 0.35em;
+    border-width: 0.30em;
     border-color: white;
 }
 
