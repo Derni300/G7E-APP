@@ -32,19 +32,19 @@ session_start();
 
 <div class="container-big">
     
-    <br><br>
+    <br>
     
     <div class="capteur-line">
         <div class="capteur-left">
-            <img src="images/co2-cloud.png" alt="Feature 01" style="width: 10em;">
-            <h4 style="font-size: 2em; margin: auto;">Capteur CO2</h4>
+            <img src="images/co2-cloud.png" alt="Feature 01" style="width: 9em;">
+            <h4 style="font-size: 1.8em; margin: auto;">Capteur CO2</h4>
 
             <p style="font-size: 1.1em;">
                 Le capteur CO2 envoie les données collectées dans notre base de données. 
                 Cela nous permet d'estimer le niveau de pollution des environs.
             </p>
         </div>
-
+        
         <div class="capteur-mid">
             <h2 class="subtitle-index">Qui sommes-nous ?</h2>
 
@@ -61,8 +61,8 @@ session_start();
         </div>
 
         <div class="capteur-right">
-            <img src="images/hot.png" alt="Feature 02" style="width: 10em;">
-            <h4 style="font-size: 2em; margin: auto;">Température</h4>
+            <img src="images/hot.png" alt="Feature 02" style="width: 9em;">
+            <h4 style="font-size: 1.8em; margin: auto;">Température</h4>
 
             <p style="font-size: 1.1em;">
                 Cette boite est une mini station météo, les données collectées pourront 
@@ -75,8 +75,8 @@ session_start();
 
     <div class="capteur-line">
         <div class="capteur-left">
-            <img src="images/map.png" alt="Feature 03" style="width: 10em;">
-            <h4 style="font-size: 2em; margin: auto;">Géolocalisation</h4>
+            <img src="images/map.png" alt="Feature 03" style="width: 9em;">
+            <h4 style="font-size: 1.8em; margin: auto;">Géolocalisation</h4>
 
             <p style="font-size: 1.1em;">
                 En combinant la géolocalisation aux données de température et de CO2. 
@@ -89,8 +89,8 @@ session_start();
         </div>
 
         <div class="capteur-right">
-            <img src="images/planet-earth.png" alt="Feature 04" style="width: 10em;">
-            <h4 style="font-size: 2em; margin: auto;">Respectueuse de l'environnement</h4>
+            <img src="images/planet-earth.png" alt="Feature 04" style="width: 9em;">
+            <h4 style="font-size: 1.8em; margin: auto;">Respectueuse de l'environnement</h4>
 
             <p style="font-size: 1.1em;">
                 Notre boitier est éco-responsable. Si cette boite est oubliée ou perdu, 
@@ -99,8 +99,6 @@ session_start();
         </div>
     </div>
 </div>
-
-<br>
 
 <footer class="navbar-bot">
     
