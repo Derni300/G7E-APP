@@ -37,10 +37,11 @@ session_start();
     <div class="capteur-line">
         <div class="capteur-left">
             <img src="images/co2-cloud.png" alt="Feature 01" style="width: 10em;">
-            <h4 style="font-size: 2em;">Capteur CO2</h4>
-            <p>
+            <h4 style="font-size: 2em; margin: auto;">Capteur CO2</h4>
+
+            <p style="font-size: 1.1em;">
                 Le capteur CO2 envoie les données collectées dans notre base de données. 
-                Cela nous permet d'estimer le niveau de pollution des environs
+                Cela nous permet d'estimer le niveau de pollution des environs.
             </p>
         </div>
 
@@ -48,48 +49,52 @@ session_start();
             <h2 class="subtitle-index">Qui sommes-nous ?</h2>
 
             <br><br>
+
             <p style="font-size: 1.1em; text-align: center;">
-            Infinite Measures est une entreprise qui s'assure de la fiabilité des pilotes 
-            c'est-à-dire de vérifier si les conducteurs sont capables de reprendre la conduite, 
-            et donc d'endurer des situations stressantes ou encore de réagir rapidement à des situations 
-            imprévues. Cette entreprise a lancé un appel d'offres pour réaliser un boitier de tests 
-            psychotechniques, demandant ainsi un savoir-faire en électronique, informatique, traitement 
-            du signal et télécommunication.
+                Infinite Measures est une entreprise qui s'assure de la fiabilité des pilotes 
+                c'est-à-dire de vérifier si les conducteurs sont capables de reprendre la conduite, 
+                et donc d'endurer des situations stressantes ou encore de réagir rapidement à des situations 
+                imprévues. Cette entreprise a lancé un appel d'offres pour réaliser un boitier de tests 
+                psychotechniques, demandant ainsi un savoir-faire en électronique, informatique, traitement 
+                du signal et télécommunication.
             </p>
         </div>
 
         <div class="capteur-right">
             <img src="images/hot.png" alt="Feature 02" style="width: 10em;">
-            <h4 style="font-size: 2em;">Température</h4>
+            <h4 style="font-size: 2em; margin: auto;">Température</h4>
+
             <p style="font-size: 1.1em;">
-            Cette boite est une mini station météo, les données collectées pourront 
-            servire à des traveaux de recherche.
+                Cette boite est une mini station météo, les données collectées pourront 
+                servire à des traveaux de recherche.
             </p>
         </div>
     </div>
 
-    <br><br><br>
+    <br>
 
     <div class="capteur-line">
         <div class="capteur-left">
             <img src="images/map.png" alt="Feature 03" style="width: 10em;">
-            <h4 style="font-size: 2em;">Géolocalisation</h4>
+            <h4 style="font-size: 2em; margin: auto;">Géolocalisation</h4>
+
             <p style="font-size: 1.1em;">
-            En combinant la géolocalisation aux données de température et de CO2. 
-            Notre algorithme permet de mesurer en direct la qualité de votre environnement
+                En combinant la géolocalisation aux données de température et de CO2. 
+                Notre algorithme permet de mesurer en direct la qualité de votre environnement.
             </p>
         </div>
 
         <div class="capteur-mid">
-            <img class="logo" src="images/logo_IM.png" alt="Logo" style="width: 26em;">
+            <img class="logo" src="images/logo_IM.png" alt="Logo" style="width: 20em;">
         </div>
 
         <div class="capteur-right">
             <img src="images/planet-earth.png" alt="Feature 04" style="width: 10em;">
-            <h4 style="font-size: 2em;">Respectueuse de l'environnement</h4>
+            <h4 style="font-size: 2em; margin: auto;">Respectueuse de l'environnement</h4>
+
             <p style="font-size: 1.1em;">
-            Notre boitier est éco-responsable. Si cette boite est oubliée ou perdu, 
-            ça durée de pollution sera limitée
+                Notre boitier est éco-responsable. Si cette boite est oubliée ou perdu, 
+                ça durée de pollution sera limitée.
             </p>
         </div>
     </div>
