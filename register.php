@@ -13,10 +13,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty(trim($_POST["username"]))){
         $username_err = "Entrez le pseudonyme";
     } elseif(!preg_match('/^[a-zA-Z0-9_]+$/', trim($_POST["username"]))){
-        $username_err = "Le pseudonyme doit contenir uniquement des letters, nombres et underscores";
+        $username_err = "Le pseudonyme doit contenir uniquement des lettres, nombres et underscores";
     } else{
         // Prepare a select statement
-        $sql = "SELECT id FROM users WHERE username = ?";
+        $sql = "SELECT id_users FROM users WHERE username = ?";
         
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
@@ -127,22 +127,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             <div class="form-group">
                 <label>Prénom</label>
-                <input type="text" name="username" class="form-control">
+                <input type="text" name="surname" class="form-control">
                 <span class="invalid-feedback"></span>
             </div>    
             <div class="form-group">
                 <label>Nom</label>
-                <input type="text" name="username" class="form-control">
+                <input type="text" name="name" class="form-control">
                 <span class="invalid-feedback"></span>
             </div> 
             <div class="form-group">
                 <label>Adresse</label>
-                <input type="text" name="username" class="form-control">
+                <input type="text" name="adress" class="form-control">
                 <span class="invalid-feedback"></span>
             </div>
             <div class="form-group">
                 <label>Clé administrateur (facultatif)</label>
-                <input type="text" name="username" class="form-control">
+                <input type="text" name="key" class="form-control">
                 <span class="invalid-feedback"></span>
             </div> 
 

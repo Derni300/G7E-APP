@@ -34,7 +34,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Valider les identifiants
     if(empty($username_err) && empty($password_err)){
         // Préparer une instruction select
-        $sql = "SELECT id, username, password FROM users WHERE username = ?";
+        $sql = "SELECT id_users, username, password FROM users WHERE username = ?";
         
         if($stmt = mysqli_prepare($link, $sql)){
             // Lier les variables à l'instruction préparée en tant que paramètres
@@ -59,7 +59,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             
                             // Stocker les données dans des variables de session
                             $_SESSION["loggedin"] = true;
-                            $_SESSION["id"] = $id;
+                            $_SESSION["id_users"] = $id;
                             $_SESSION["username"] = $username;                            
                             
                             // Rediriger l'utilisateur vers la page d'accueil
