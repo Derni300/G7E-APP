@@ -50,7 +50,6 @@ $host = 'localhost';
 </nav>
 
 <br>
-<br>
 
 <div class="container">
     <br>

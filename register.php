@@ -137,7 +137,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </div> 
             <div class="form-group">
                 <label>Adresse</label>
-                <input type="text" name="adress" class="form-control">
+                <input type="text" name="address" class="form-control">
                 <span class="invalid-feedback"></span>
             </div>
             <div class="form-group">

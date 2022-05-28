@@ -273,6 +273,7 @@ li a:hover {
 
 .container {
     margin: 0 auto;
+    margin-top: 2em;
     width: 60em;
     text-align: center;
     color: white;
@@ -281,7 +282,7 @@ li a:hover {
     border-radius: 40px;
     padding-bottom: 0.5em;
     border: solid;
-    border-width: 0.35em;
+    border-width: 0.30em;
     border-color: white;
 }
 

@@ -28,7 +28,7 @@ session_start();
     </ul>
 </nav>
 
-<br><br>
+<br>
 
 <div class="container-big">
 
