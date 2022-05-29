@@ -8,7 +8,8 @@ $host = 'localhost';
     
   $dsn = "mysql:host=$host;dbname=$dbname"; 
   // récupérer tous les utilisateurs
-  $sql = "SELECT * FROM capteurs INNER JOIN users WHERE capteurs.id_users = users.id_users";
+  $id = $_SESSION["id_users"];
+  $sql = "SELECT * FROM capteurs WHERE id_users = $id";
    
   try{
    $pdo = new PDO($dsn, $username, $password);
