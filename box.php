@@ -7,8 +7,13 @@ $host = 'localhost';
   $password = 'root';
     
   $dsn = "mysql:host=$host;dbname=$dbname"; 
-  // récupérer tous les utilisateurs
-  $id = $_SESSION["id_users"];
+
+  if ($_SESSION != array()) {
+    $id = $_SESSION["id_users"];
+  } else {
+    $id = 0;
+  }
+
   $sql = "SELECT * FROM capteurs WHERE id_users = $id";
    
   try{
