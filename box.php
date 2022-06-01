@@ -41,6 +41,7 @@ try{
     <ul>
         <li style='padding-right: 2px'><a href="index.php">Accueil</a></li>
         <li style='padding-right: 2px'><a href="box.php">La boite</a></li>
+        <li style='padding-right: 2px'><a href="concours.php">Concours</a></li>
         <li><a href="forum.php">Forum</a></li>
 
         <?php

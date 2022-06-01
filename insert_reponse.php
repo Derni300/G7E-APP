@@ -1,66 +1,55 @@
 <?php
+// Include config file
+require_once "config.php";
 session_start();
-// on teste si le formulaire a été soumis
-if (isset ($_POST['go']) && $_POST['go']=='Poster') {
-	// on teste la déclaration de nos variables
-	if (!isset($_POST['auteur']) || !isset($_POST['titre']) || !isset($_POST['message'])) {
-	$erreur = 'Les variables nécessaires au script ne sont pas définies.';
-	}
-	else {
-	// on teste si les variables ne sont pas vides
-	if (empty($_POST['auteur']) || empty($_POST['titre']) || empty($_POST['message'])) {
-		$erreur = 'Au moins un des champs est vide.';
-	}
 
-	// si tout est bon, on peut commencer l'insertion dans la base
-	else {
-		// on se connecte à notre base
-		$host = 'localhost';
-        $dbname = '[app]';
-        $username = 'root';
-        $password = 'root';
-
-        $dsn = "mysql:host=$host;dbname=$dbname"; 
+// Define variables and initialize with empty values
+$auteur = $message = "";
+$auteur_err = $message_err = "";
+ 
+// Processing form data when form is submitted
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    // Validate username
+    if(empty(trim($_POST["auteur"]))){
+        $auteur_err = "Entrez le nom de l'auteur";
+    } elseif(empty(trim($_POST["message"]))){
+        $message_err = "Entrer le message";
+    } else {
+        $auteur = trim($_POST["auteur"]);
+        $message = trim($_POST["message"]);
+    }
     
-        $link = mysqli_connect($host, $username, $password, $dbname);
-
-		// on calcule la date actuelle
-		$date = date("Y-m-d H:i:s");
-
-        if(empty(trim($_POST["auteur"])) && empty(trim($_POST["titre"])) && empty(trim($_POST["message"]))){
+    // Check input errors before inserting in database
+    if(empty($auteur_err) && empty($message_err)){
         
-            // Prepare an insert statement
-            $sql = "INSERT INTO forum_reponses (auteur, titre, message) VALUES (?, ?, ?)";
-             
-            if($stmt = mysqli_prepare($link, $sql)){
-                // Bind variables to the prepared statement as parameters
-                mysqli_stmt_bind_param($stmt, "ss", $param_auteur, $param_titre, $param_message);
-                
-                // Set parameters
-                $param_auteur = $_POST["auteur"];
-                $param_titre = $_POST["titre"];
-                $param_message = $_POST["message"];
-                
-                // Attempt to execute the prepared statement
-                if(mysqli_stmt_execute($stmt)){
-                    // Redirect to login page
-                    header("location: forum.php");
-                } else{
-                    echo "Veuillez réessayer";
-                }
-    
-                // Close statement
-                mysqli_stmt_close($stmt);
+        // Prepare an insert statement
+        $sql = "INSERT INTO forum_reponses (auteur, message, date_reponse, correspondance_sujet) VALUES (?, ?, ?, ?)";
+         
+        if($stmt = mysqli_prepare($link, $sql)){
+            // Bind variables to the prepared statement as parameters
+            mysqli_stmt_bind_param($stmt, "ssss", $param_auteur, $param_message, $param_date_reponse, $param_correspondance_sujet);
+            
+            // Set parameters
+            $param_auteur= $auteur;
+            $param_message = $message;
+            $param_date_reponse = date("Y-m-d H:i:s");
+            $param_correspondance_sujet = 1;
+            
+            // Attempt to execute the prepared statement
+            if(mysqli_stmt_execute($stmt)){
+                // Redirect to login page
+                header("location: login.php");
+            } else{
+                echo "Veuillez réessayer";
             }
+
+            // Close statement
+            mysqli_stmt_close($stmt);
         }
-
-		// on redirige vers la page d'accueil
-		header('Location: forum.php');
-
-		// on termine le script courant
-		exit;
-	}
-	}
+    }
+    
+    // Close connection
+    mysqli_close($link);
 }
 ?>
 
@@ -97,26 +86,21 @@ if (isset ($_POST['go']) && $_POST['go']=='Poster') {
 
 <br>
     
-<form action="insert_sujet.php" method="post">
-<table>
-<tr><td>
-[b]Auteur :[/b]
-</td><td>
-<input type="text" name="auteur" maxlength="30" size="50" value="<?php if (isset($_POST['auteur'])) echo htmlentities(trim($_POST['auteur'])); ?>">
-</td></tr><tr><td>
-[b]Titre :[/b]
-</td><td>
-<input type="text" name="titre" maxlength="50" size="50" value="<?php if (isset($_POST['titre'])) echo htmlentities(trim($_POST['titre'])); ?>">
-</td></tr><tr><td>
-[b]Message :[/b]
-</td><td>
-<textarea name="message" cols="50" rows="10"><?php if (isset($_POST['message'])) echo htmlentities(trim($_POST['message'])); ?></textarea>
-</td></tr><tr><td><td align="right">
-<input type="submit" name="go" value="Poster">
-</td></tr></table>
+<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+    <table>
+    <tr><td>
+    [b]Auteur :[/b]
+    </td><td>
+    <input type="text" name="auteur" maxlength="30" size="50" class="form-control <?php echo (!empty($auteur_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $auteur; ?>">
+    </td></tr><tr><td>
+    [b]Message :[/b]
+    </td><td>
+    <textarea name="message" cols="50" rows="10"><?php if (isset($_POST['message'])) echo htmlentities(trim($_POST['message'])); ?></textarea>
+    </td></tr><tr><td><td align="right">
+    <input type="submit" name="go" value="Poster">
+    </td></tr></table>
 </form>
 <?php
-// on affiche les erreurs éventuelles
 if (isset($erreur)) echo '<br /><br />',$erreur;
 ?>
 
