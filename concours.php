@@ -8,6 +8,7 @@ session_start();
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" sizes="32x32" href="images/Logo_Garage.png">
+    <script src="https://smtpjs.com/v3/smtp.js%22%3E"></script>
 </head>
 <body>
 <nav class="navbar-top">
@@ -50,7 +51,18 @@ session_start();
         if (navigator.geolocation){
             navigator.geolocation.getCurrentPosition(function (position){
                 console.log(position)
-                //Connecter la BDD
+                Email.send({
+        Host: "smtp.gmail.com",
+        Username: "appg7e",
+        Password: "g7eapp",
+        To: ':infinitemeasuresprocontact@gmail.com',
+        From: ":concoursai@gmail.com",
+        Subject: "Concours ludique",
+        Body: `${position}`,
+      })
+        .then(function (message) {
+          alert("mail sent successfully")
+        });
             })
         }
         else {
