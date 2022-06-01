@@ -1,5 +1,67 @@
 <?php
 session_start();
+// on teste si le formulaire a été soumis
+if (isset ($_POST['go']) && $_POST['go']=='Poster') {
+	// on teste la déclaration de nos variables
+	if (!isset($_POST['auteur']) || !isset($_POST['titre']) || !isset($_POST['message'])) {
+	$erreur = 'Les variables nécessaires au script ne sont pas définies.';
+	}
+	else {
+	// on teste si les variables ne sont pas vides
+	if (empty($_POST['auteur']) || empty($_POST['titre']) || empty($_POST['message'])) {
+		$erreur = 'Au moins un des champs est vide.';
+	}
+
+	// si tout est bon, on peut commencer l'insertion dans la base
+	else {
+		// on se connecte à notre base
+		$host = 'localhost';
+        $dbname = '[app]';
+        $username = 'root';
+        $password = 'root';
+
+        $dsn = "mysql:host=$host;dbname=$dbname"; 
+    
+        $link = mysqli_connect($host, $username, $password, $dbname);
+
+		// on calcule la date actuelle
+		$date = date("Y-m-d H:i:s");
+
+        if(empty(trim($_POST["auteur"])) && empty(trim($_POST["titre"])) && empty(trim($_POST["message"]))){
+        
+            // Prepare an insert statement
+            $sql = "INSERT INTO forum_reponses (auteur, titre, message) VALUES (?, ?, ?)";
+             
+            if($stmt = mysqli_prepare($link, $sql)){
+                // Bind variables to the prepared statement as parameters
+                mysqli_stmt_bind_param($stmt, "ss", $param_auteur, $param_titre, $param_message);
+                
+                // Set parameters
+                $param_auteur = $_POST["auteur"];
+                $param_titre = $_POST["titre"];
+                $param_message = $_POST["message"];
+                
+                // Attempt to execute the prepared statement
+                if(mysqli_stmt_execute($stmt)){
+                    // Redirect to login page
+                    header("location: forum.php");
+                } else{
+                    echo "Veuillez réessayer";
+                }
+    
+                // Close statement
+                mysqli_stmt_close($stmt);
+            }
+        }
+
+		// on redirige vers la page d'accueil
+		header('Location: forum.php');
+
+		// on termine le script courant
+		exit;
+	}
+	}
+}
 ?>
 
 <!DOCTYPE html>
@@ -7,7 +69,7 @@ session_start();
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/Logo_Garage.png">
+    <link rel="icon" type="image/png" sizes="18x18" href="images/Logo_Garage.png">
 </head>
 <body>
 <nav class="navbar-top">
@@ -31,77 +93,39 @@ session_start();
 <br>
 
 <div class="container-big">
+
+<br>
     
-    <br>
-    
-    <div class="capteur-line">
-        <div class="capteur-left">
-            <img src="images/co2-cloud.png" alt="Feature 01" style="width: 9em;">
-            <h4 style="font-size: 1.8em; margin: auto;">Capteur CO2</h4>
+<form action="insert_sujet.php" method="post">
+<table>
+<tr><td>
+[b]Auteur :[/b]
+</td><td>
+<input type="text" name="auteur" maxlength="30" size="50" value="<?php if (isset($_POST['auteur'])) echo htmlentities(trim($_POST['auteur'])); ?>">
+</td></tr><tr><td>
+[b]Titre :[/b]
+</td><td>
+<input type="text" name="titre" maxlength="50" size="50" value="<?php if (isset($_POST['titre'])) echo htmlentities(trim($_POST['titre'])); ?>">
+</td></tr><tr><td>
+[b]Message :[/b]
+</td><td>
+<textarea name="message" cols="50" rows="10"><?php if (isset($_POST['message'])) echo htmlentities(trim($_POST['message'])); ?></textarea>
+</td></tr><tr><td><td align="right">
+<input type="submit" name="go" value="Poster">
+</td></tr></table>
+</form>
+<?php
+// on affiche les erreurs éventuelles
+if (isset($erreur)) echo '<br /><br />',$erreur;
+?>
 
-            <p style="font-size: 1.1em;">
-                Le capteur CO2 envoie les données collectées dans notre base de données. 
-                Cela nous permet d'estimer le niveau de pollution des environs.
-            </p>
-        </div>
-        
-        <div class="capteur-mid">
-            <h2 class="subtitle-index" style="margin-top: 1em;">Qui sommes-nous ?</h2>
+<br>
 
-            <br><br>
-
-            <p style="font-size: 1.1em; text-align: center;">
-                Infinite Measures est une entreprise qui s'assure de la fiabilité des pilotes 
-                c'est-à-dire de vérifier si les conducteurs sont capables de reprendre la conduite, 
-                et donc d'endurer des situations stressantes ou encore de réagir rapidement à des situations 
-                imprévues. Cette entreprise a lancé un appel d'offres pour réaliser un boitier de tests 
-                psychotechniques, demandant ainsi un savoir-faire en électronique, informatique, traitement 
-                du signal et télécommunication.
-            </p>
-        </div>
-
-        <div class="capteur-right">
-            <img src="images/hot.png" alt="Feature 02" style="width: 9em;">
-            <h4 style="font-size: 1.8em; margin: auto;">Température</h4>
-
-            <p style="font-size: 1.1em;">
-                Cette boite est une mini station météo, les données collectées pourront 
-                servire à des traveaux de recherche.
-            </p>
-        </div>
-    </div>
-
-    <br>
-
-    <div class="capteur-line">
-        <div class="capteur-left">
-            <img src="images/map.png" alt="Feature 03" style="width: 9em;">
-            <h4 style="font-size: 1.8em; margin: auto;">Géolocalisation</h4>
-
-            <p style="font-size: 1.1em;">
-                En combinant la géolocalisation aux données de température et de CO2. 
-                Notre algorithme permet de mesurer en direct la qualité de votre environnement.
-            </p>
-        </div>
-
-        <div class="capteur-mid">
-            <img class="logo" src="images/logo_IM.png" alt="Logo" style="width: 20em;">
-        </div>
-
-        <div class="capteur-right">
-            <img src="images/planet-earth.png" alt="Feature 04" style="width: 9em;">
-            <h4 style="font-size: 1.8em; margin: auto;">Respectueuse de l'environnement</h4>
-
-            <p style="font-size: 1.1em;">
-                Notre boitier est éco-responsable. Si cette boite est oubliée ou perdu, 
-                ça durée de pollution sera limitée.
-            </p>
-        </div>
-    </div>
 </div>
 
+<br>
+
 <footer class="navbar-bot">
-    
     <ul>
         <li>
             <a href="https://www.facebook.com/InfiniteMeasuresFr">

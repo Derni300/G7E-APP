@@ -7,7 +7,7 @@ session_start();
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/Logo_Garage.png">
+    <link rel="icon" type="image/png" sizes="18x18" href="images/Logo_Garage.png">
 </head>
 <body>
 <nav class="navbar-top">
@@ -31,77 +31,95 @@ session_start();
 <br>
 
 <div class="container-big">
+
+<br>
+
+<a href="./insert_sujet.php">Insérer un sujet</a>
+
+<br>
+<br>
     
-    <br>
+<?php
+    $host = 'localhost';
+    $dbname = '[app]';
+    $username = 'root';
+    $password = 'root';
+
+    $dsn = "mysql:host=$host;dbname=$dbname"; 
     
-    <div class="capteur-line">
-        <div class="capteur-left">
-            <img src="images/co2-cloud.png" alt="Feature 01" style="width: 9em;">
-            <h4 style="font-size: 1.8em; margin: auto;">Capteur CO2</h4>
+    $link = mysqli_connect($host, $username, $password, $dbname);
 
-            <p style="font-size: 1.1em;">
-                Le capteur CO2 envoie les données collectées dans notre base de données. 
-                Cela nous permet d'estimer le niveau de pollution des environs.
-            </p>
-        </div>
-        
-        <div class="capteur-mid">
-            <h2 class="subtitle-index" style="margin-top: 1em;">Qui sommes-nous ?</h2>
+    $sql = "SELECT id, auteur, titre, date_derniere_reponse FROM forum_sujets ORDER BY date_derniere_reponse DESC";
+   
+    try{
+        $stmt = mysqli_prepare($link, $sql);
+        mysqli_stmt_execute($stmt);
+   
+        if($stmt === false){
+            die("Erreur");
+        }
+   
+    }catch (PDOException $e){
+        echo $e->getMessage();
+    }
 
-            <br><br>
+    mysqli_stmt_store_result($stmt);
 
-            <p style="font-size: 1.1em; text-align: center;">
-                Infinite Measures est une entreprise qui s'assure de la fiabilité des pilotes 
-                c'est-à-dire de vérifier si les conducteurs sont capables de reprendre la conduite, 
-                et donc d'endurer des situations stressantes ou encore de réagir rapidement à des situations 
-                imprévues. Cette entreprise a lancé un appel d'offres pour réaliser un boitier de tests 
-                psychotechniques, demandant ainsi un savoir-faire en électronique, informatique, traitement 
-                du signal et télécommunication.
-            </p>
-        </div>
+    // on compte le nombre de sujets du forum
+    $nb_sujets = mysqli_stmt_num_rows($stmt);
 
-        <div class="capteur-right">
-            <img src="images/hot.png" alt="Feature 02" style="width: 9em;">
-            <h4 style="font-size: 1.8em; margin: auto;">Température</h4>
+    if ($nb_sujets == 0) {
+	    echo 'Aucun sujet';
+    }
+    else {
+	?>
 
-            <p style="font-size: 1.1em;">
-                Cette boite est une mini station météo, les données collectées pourront 
-                servire à des traveaux de recherche.
-            </p>
-        </div>
-    </div>
+	<table width="1000"><tr>
+	<td>
+	    Auteur
+	</td><td>
+	    Titre du sujet
+	</td><td>
+	    Date dernière réponse
+    </td></tr>
 
-    <br>
+	<?php
+	    // on va scanner tous les tuples un par un
+        $pdo = new PDO($dsn, $username, $password);
+        $stmt = $pdo->query($sql);
+	    while ($data = $stmt->fetch(PDO::FETCH_ASSOC)) {
+	    // on décompose la date
+	    sscanf($data['date_derniere_reponse'], "%4s-%2s-%2s %2s:%2s:%2s", $annee, $mois, $jour, $heure, $minute, $seconde);
 
-    <div class="capteur-line">
-        <div class="capteur-left">
-            <img src="images/map.png" alt="Feature 03" style="width: 9em;">
-            <h4 style="font-size: 1.8em; margin: auto;">Géolocalisation</h4>
+	    // on affiche les résultats
+	    echo '<tr>';
+	    echo '<td>';
 
-            <p style="font-size: 1.1em;">
-                En combinant la géolocalisation aux données de température et de CO2. 
-                Notre algorithme permet de mesurer en direct la qualité de votre environnement.
-            </p>
-        </div>
+	    // on affiche le nom de l'auteur de sujet
+	    echo htmlentities(trim($data['auteur']));
+	    echo '</td><td>';
 
-        <div class="capteur-mid">
-            <img class="logo" src="images/logo_IM.png" alt="Logo" style="width: 20em;">
-        </div>
+	    // on affiche le titre du sujet, et sur ce sujet, on insère le lien qui nous permettra de lire les différentes réponses de ce sujet
+	    echo '<a href="./lire_sujet.php?id_sujet_a_lire=' , $data['id'] , '">' , htmlentities(trim($data['titre'])) , '</a>';
 
-        <div class="capteur-right">
-            <img src="images/planet-earth.png" alt="Feature 04" style="width: 9em;">
-            <h4 style="font-size: 1.8em; margin: auto;">Respectueuse de l'environnement</h4>
+	    echo '</td><td>';
 
-            <p style="font-size: 1.1em;">
-                Notre boitier est éco-responsable. Si cette boite est oubliée ou perdu, 
-                ça durée de pollution sera limitée.
-            </p>
-        </div>
-    </div>
+	    // on affiche la date de la dernière réponse de ce sujet
+	    echo $jour , '-' , $mois , '-' , $annee , ' ' , $heure , ':' , $minute;
+	    }
+	?>
+	</td></tr></table>
+	<?php
+    }
+?>
+
+<br>
+
 </div>
 
+<br>
+
 <footer class="navbar-bot">
-    
     <ul>
         <li>
             <a href="https://www.facebook.com/InfiniteMeasuresFr">

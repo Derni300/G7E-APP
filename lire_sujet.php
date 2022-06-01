@@ -14,7 +14,7 @@ session_start();
     <ul>
         <li style='padding-right: 2px'><a href="index.php">Accueil</a></li>
         <li style='padding-right: 2px'><a href="box.php">La boite</a></li>
-        <li><a href="contact.php">Contact</a></li>
+        <li><a href="forum.php">Forum</a></li>
 
         <?php
             if($_SESSION == array()){
@@ -32,41 +32,84 @@ session_start();
 
 <div class="container-big">
 
-    <br><br><br><br>
+<br>
+    
+<?php
+if (!isset($_GET['id_sujet_a_lire'])) {
+	echo 'Sujet non défini.';
+}
+else {
+?>
+	<table width="500"><tr>
+	<td>
+	Auteur
+	</td><td>
+	Messages
+	</td></tr>
+	<?php
+	// on se connecte à notre base de données
+	$host = 'localhost';
+    $dbname = '[app]';
+    $username = 'root';
+    $password = 'root';
 
-    <div class="capteur-line">
-        <div class="capteur-left" style="width: 43em;">
-            <a href="https://www.facebook.com/InfiniteMeasuresFr">
-                <img src="images/facebook.png" alt="Feature 01" style="width: 20em;">
-            </a>
-            <h4 style="font-size: 3em;">Notre Facebook</h4>
-        </div>
-        
-        <div class="capteur-right" style="width: 43em;">
-            <a href="https://www.instagram.com/infinite_measures/">
-                <img src="images/instagram.png" alt="Feature 02" style="width: 20em;">
-            </a>
-            <h4 style="font-size: 3em;">Notre instagram</h4>
-        </div>
-    </div>
+    $dsn = "mysql:host=$host;dbname=$dbname"; 
+    
+    $link = mysqli_connect($host, $username, $password, $dbname);
 
-    <br><br><br><br><br>
+    $sql = 'SELECT auteur, message, date_reponse FROM forum_reponses WHERE correspondance_sujet="'.$_GET['id_sujet_a_lire'].'" ORDER BY date_reponse ASC';
+   
+    try{
+        $stmt = mysqli_prepare($link, $sql);
+        mysqli_stmt_execute($stmt);
+   
+        if($stmt === false){
+            die("Erreur");
+        }
+   
+    }catch (PDOException $e){
+        echo $e->getMessage();
+    }
 
-    <div class="capteur-line">
-        <div class="capteur-left" style="width: 43em;">
-            <a href="https://twitter.com/InfiniteMeasur4">
-                <img src="images/twitter.png" alt="Feature 03" style="width: 20em;">
-            </a>
-            <h4 style="font-size: 3em;">Notre Twitter</h4>
-        </div>
+    mysqli_stmt_store_result($stmt);
 
-        <div class="capteur-right" style="width: 43em;">
-            <a href="mailto:infinitemeasuresprocontact@gmail.com">
-                <img src="images/email.png" alt="Feature 04" style="width: 20em;">
-            </a>
-            <h4 style="font-size: 3em;">Notre E-mail</h4>
-        </div>
-    </div>
+	// on va scanner tous les tuples un par un
+	$pdo = new PDO($dsn, $username, $password);
+    $stmt = $pdo->query($sql);
+	while ($data = $stmt->fetch(PDO::FETCH_ASSOC)) {
+
+	// on décompose la date
+	sscanf($data['date_reponse'], "%4s-%2s-%2s %2s:%2s:%2s", $annee, $mois, $jour, $heure, $minute, $seconde);
+
+	// on affiche les résultats
+	echo '<tr>';
+	echo '<td>';
+
+	// on affiche le nom de l'auteur de sujet ainsi que la date de la réponse
+	echo htmlentities(trim($data['auteur']));
+	echo '<br />';
+	echo $jour , '-' , $mois , '-' , $annee , ' ' , $heure , ':' , $minute;
+
+	echo '</td><td>';
+
+	// on affiche le message
+	echo nl2br(htmlentities(trim($data['message'])));
+	echo '</td></tr>';
+	}
+
+	?>
+
+	<!-- on ferme notre table html -->
+	</table>
+	<br /><br />
+	<!-- on insère un lien qui nous permettra de rajouter des réponses à ce sujet -->
+	<a href="./insert_reponse.php?numero_du_sujet=<?php echo $_GET['id_sujet_a_lire']; ?>">Répondre</a>
+	<?php
+}
+?>
+
+<br>
+
 </div>
 
 <br>
@@ -95,6 +138,11 @@ session_start();
                 <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
                     <path d="M16 3c-.6.3-1.2.4-1.9.5.7-.4 1.2-1 1.4-1.8-.6.4-1.3.6-2.1.8-.6-.6-1.5-1-2.4-1-1.7 0-3.2 1.5-3.2 3.3 0 .3 0 .5.1.7-2.7-.1-5.2-1.4-6.8-3.4-.3.5-.4 1-.4 1.7 0 1.1.6 2.1 1.5 2.7-.5 0-1-.2-1.5-.4C.7 7.7 1.8 9 3.3 9.3c-.3.1-.6.1-.9.1-.2 0-.4 0-.6-.1.4 1.3 1.6 2.3 3.1 2.3-1.1.9-2.5 1.4-4.1 1.4H0c1.5.9 3.2 1.5 5 1.5 6 0 9.3-5 9.3-9.3v-.4C15 4.3 15.6 3.7 16 3z" fill="#0270D7"></path>
                 </svg>
+            </a>
+        </li>
+        <li>
+            <a href="mailto:infinitemeasuresprocontact@gmail.com">
+                <span class="screen-reader-text">Mail</span>
             </a>
         </li>
     </ul>

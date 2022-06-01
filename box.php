@@ -2,21 +2,21 @@
 session_start();
 
 $host = 'localhost';
-  $dbname = '[app]';
-  $username = 'root';
-  $password = 'root';
+$dbname = '[app]';
+$username = 'root';
+$password = 'root';
     
-  $dsn = "mysql:host=$host;dbname=$dbname"; 
+$dsn = "mysql:host=$host;dbname=$dbname"; 
 
-  if ($_SESSION != array()) {
+if ($_SESSION != array()) {
     $id = $_SESSION["id_users"];
-  } else {
+} else {
     $id = 0;
-  }
+}
 
-  $sql = "SELECT * FROM capteurs WHERE id_users = $id";
+$sql = "SELECT * FROM capteurs WHERE id_users = $id";
    
-  try{
+try{
    $pdo = new PDO($dsn, $username, $password);
    $stmt = $pdo->query($sql);
    
@@ -24,9 +24,9 @@ $host = 'localhost';
     die("Erreur");
    }
    
-  }catch (PDOException $e){
+}catch (PDOException $e){
     echo $e->getMessage();
-  }
+}
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +41,7 @@ $host = 'localhost';
     <ul>
         <li style='padding-right: 2px'><a href="index.php">Accueil</a></li>
         <li style='padding-right: 2px'><a href="box.php">La boite</a></li>
-        <li><a href="contact.php">Contact</a></li>
+        <li><a href="forum.php">Forum</a></li>
 
         <?php
             if($_SESSION == array()){
@@ -57,39 +57,7 @@ $host = 'localhost';
 
 <br>
 
-<div class="container">
-    <br>
-    <br>
-
-    <h2 class="subtitle">Données des Capteurs</h2>
-    
-    <br>
-    <br>
-
-    <div class="capteur">
-            
-        <h3>Température</h3>
-
-        <div>
-            22°C
-        </div>
-        <img src="images/hot.png" alt="Feature 01"  style="width: 6em;">
-    </div>
-
-    <div class="capteur">
-
-        <h3>CO2</h3>
-
-        <div>
-            30%
-        </div>
-        <img src="images/co2-cloud.png" alt="Feature 01"  style="width: 6em;">
-    </div>
-</div>
-
-<br><br>
-
-<div class = "container">
+<div class = "container-left">
 
 <h2>Tableau de mesure</h2>
 
@@ -118,6 +86,23 @@ $host = 'localhost';
 <br>
 </div>
 
+<div class = "container-right">
+
+    <h2>Graphe de mesure</h2>
+
+    <div>
+        <br>
+        <tbody>
+            <?php
+                $stmt->execute();
+                $donnees = $stmt->fetchAll(PDO::FETCH_COLUMN, 4);
+                print_r($donnees);
+            ?>
+            <canvas id="graphe" width="400" height="300"></canvas>
+        </tbody>
+    </div>
+</div>
+
 <br>
 
 <footer class="navbar-bot">   
@@ -144,6 +129,11 @@ $host = 'localhost';
                 <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
                     <path d="M16 3c-.6.3-1.2.4-1.9.5.7-.4 1.2-1 1.4-1.8-.6.4-1.3.6-2.1.8-.6-.6-1.5-1-2.4-1-1.7 0-3.2 1.5-3.2 3.3 0 .3 0 .5.1.7-2.7-.1-5.2-1.4-6.8-3.4-.3.5-.4 1-.4 1.7 0 1.1.6 2.1 1.5 2.7-.5 0-1-.2-1.5-.4C.7 7.7 1.8 9 3.3 9.3c-.3.1-.6.1-.9.1-.2 0-.4 0-.6-.1.4 1.3 1.6 2.3 3.1 2.3-1.1.9-2.5 1.4-4.1 1.4H0c1.5.9 3.2 1.5 5 1.5 6 0 9.3-5 9.3-9.3v-.4C15 4.3 15.6 3.7 16 3z" fill="#0270D7"></path>
                 </svg>
+            </a>
+        </li>
+        <li>
+            <a href="mailto:infinitemeasuresprocontact@gmail.com">
+                <span class="screen-reader-text">Mail</span>
             </a>
         </li>
     </ul>
