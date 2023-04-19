@@ -9,4 +9,4 @@ COPY --chown=nginx:www-data --chmod=777 . /var/www/html
 LABEL ORIGIN herogu.garageisep.com
 
 EXPOSE 80
-LABEL org.opencontainers.image.source https://github.com/derni300/wartown
+LABEL org.opencontainers.image.source https://github.com/derni300/g7e-app
